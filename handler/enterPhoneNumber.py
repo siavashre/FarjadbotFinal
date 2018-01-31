@@ -8,6 +8,7 @@ class EnterPhoneNumber():
 
     def checkPhoneNumber(self, bot, message, current_state):
         # if msg.contact.user_id != msg.chat_id
+        # check kardan e in ke oke ya na
         if message.text=='null':
             bot.send_message(chat_id=message.chat_id, text=message.text)
         else:
