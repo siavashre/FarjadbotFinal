@@ -10,7 +10,7 @@
     "updater":"enterPhoneNumber",
     "function" :"checkPhoneNumber",
     "nextState":{
-      "notRegister":"notRegister",
+      "firstTime":"firstTime",
       "enterCode":"enterCode"
     }
   },
@@ -18,7 +18,7 @@
     "updater":"notRegister",
     "function":"registerOnSite",
     "nextState":{
-
+      "firstTime":"firstTime"
     }
   },
   "enterCode":{
