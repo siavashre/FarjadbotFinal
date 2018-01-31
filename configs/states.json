@@ -1,0 +1,39 @@
+{
+  "firstTime": {
+    "updater": "fisrtTime",
+    "function": "start",
+    "nextState": {
+      "all": "enterPhoneNumber"
+    }
+  },
+  "enterPhoneNumber": {
+    "updater":"enterPhoneNumber",
+    "function" :"checkPhoneNumber",
+    "nextState":{
+      "notRegister":"notRegister",
+      "enterCode":"enterCode"
+    }
+  },
+  "notRegister":{
+    "updater":"notRegister",
+    "function":"registerOnSite",
+    "nextState":{
+
+    }
+  },
+  "enterCode":{
+    "updater":"enterCode",
+    "function":"checkCode",
+    "nextState":{
+      "resendCode":"resendCode",
+      "loggedIn":"loggedIn"
+    }
+  },
+  "resendCode":{
+    "updater":"resendCode",
+    "function":"resendCode",
+    "nextState":{
+      "enterCode":"enterCode"
+    }
+  }
+}
