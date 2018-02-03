@@ -1,0 +1,10 @@
+name = ""
+author = ""
+price = 0
+period = ""
+page_num = 0
+genre = ""
+reader_age = ""
+jeld_num = 0
+summery = ""
+description = ""
