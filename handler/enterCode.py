@@ -9,7 +9,8 @@ class EnterCode():
     def checkCode(self, bot, message, current_state):
         # print(1)
         if message.text=='12345':
-            bot.send_message(chat_id=message.chat_id, text="Your login to your account",reply_markup=keyboards["addBook"])
+            bot.send_message(chat_id=message.chat_id, text="Your login to your account",reply_markup=keyboards["loggedIn"])
+            return self.states[current_state]["nextState"]["loggedIn"]
         else:
             # print(2)
             bot.send_message(chat_id=message.chat_id, text="Your code is incorrect"+"\n"+"Please touch resend button to send newe code",reply_markup=keyboards["resendCode"])

@@ -35,5 +35,29 @@
     "nextState":{
       "enterCode":"enterCode"
     }
+  },
+  "loggedIn":{
+    "updater":"loggedIn",
+    "function":"loggedIn",
+    "nextState":{
+      "watchMore":"watchMore",
+      "addBook":"addBook"
+    }
+  },
+  "watchMore":{
+    "updater":"watchMore",
+    "function":"watchMore",
+    "nextState":{
+      "watchMore":"watchMore",
+      "loggedIn":"loggedIn"
+    }
+  },
+  "addBook":{
+    "updater":"addBook",
+    "function":"addBook",
+    "nextState":{
+      "addBook":"addBook",
+      "loggedIn":"loggedIn"
+    }
   }
 }

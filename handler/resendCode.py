@@ -8,5 +8,5 @@ class ResendCode():
 
     def resendCode(self, bot, message, current_state):
         if message.text=="Resend Code":
-            bot.send_message(chat_id=message.chat_id, text="new code sent to your mobile"+"\n"+"Enter your phone number:")
+            bot.send_message(chat_id=message.chat_id, text="new code sent to your mobile"+"\n"+"Enter your code:")
             return self.states[current_state]["nextState"]["enterCode"]
