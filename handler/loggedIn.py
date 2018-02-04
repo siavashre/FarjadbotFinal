@@ -16,11 +16,11 @@ class LoggedIn():
             , "Trajedy": "تراژدی"}
         readerAge = { "A":"گروه سنی الف",  "B":"گروه سنی ب",  "C":"گروه سنی ج",  "D":"گروه سنی د",  "E":"گروه سنی ه"}
         period = { "daily":"روزانه",  "weekly":"هفتگی",  "monthly":"ماهانه"}
-        if message.text=="Add Book to your account":
+        if message.text=="اضافه کردن کتاب":
             print("aaa")
             bot.send_message(chat_id=message.chat_id, text="لطفا هر فیلد را انتخاب و وارد کنید",reply_markup=keyboards["addBook"])
             return self.states[current_state]["nextState"]["addBook"]
-        elif message.text=="Whatch Books":
+        elif message.text=="مشاهده کتب":
             r = requests.get(url.base_url + '/books/api/')
             print(r.text)
             books=ast.literal_eval(r.text)

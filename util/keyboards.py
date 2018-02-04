@@ -3,28 +3,28 @@ import telegram
 keyboards = {
     "enterPhoneNumber": telegram.ReplyKeyboardMarkup([
         [
-            telegram.KeyboardButton("Share Phone Number", request_contact=True)
+            telegram.KeyboardButton("به اشتراک گذاری شماره تلفن", request_contact=True)
         ]
     ], resize_keyboard=True),
     "loggedIn": telegram.ReplyKeyboardMarkup([
         [
-            telegram.KeyboardButton("Add Book to your account"), telegram.KeyboardButton("Whatch Books")
+            telegram.KeyboardButton("اضافه کردن کتاب"), telegram.KeyboardButton("مشاهده کتب")
         ]
     ], resize_keyboard=True),
     "resendCode": telegram.ReplyKeyboardMarkup([
         [
-            telegram.KeyboardButton("Resend Code")
+            telegram.KeyboardButton("ارسال دوباره")
         ]
     ], resize_keyboard=True),
     "watchBook": telegram.ReplyKeyboardMarkup([
         [
-            telegram.KeyboardButton("Watch books")
+            telegram.KeyboardButton("مشاهده کتب")
         ]
     ], resize_keyboard=True),
     "watchMore": telegram.ReplyKeyboardMarkup([
         [
-            telegram.KeyboardButton("Watch More"),
-            telegram.KeyboardButton("Return")
+            telegram.KeyboardButton("مشاهده بیشتر"),
+            telegram.KeyboardButton("بازگشت")
         ]
     ], resize_keyboard=True),
     "addBook": telegram.ReplyKeyboardMarkup([

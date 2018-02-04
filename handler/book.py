@@ -4,10 +4,10 @@ price = 0
 period = ""
 page_num = 0
 genre = ""
-reader_age = ""
+reader_age = "."
 jeld_num = 0
-summery = ""
-description = ""
+summery = "."
+description = "."
 
 
 def printBook():

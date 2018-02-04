@@ -7,6 +7,6 @@ class ResendCode():
             self.states = json.load(f)
 
     def resendCode(self, bot, message, current_state):
-        if message.text=="Resend Code":
+        if message.text=="ارسال دوباره":
             bot.send_message(chat_id=message.chat_id, text="new code sent to your mobile"+"\n"+"Enter your code:")
             return self.states[current_state]["nextState"]["enterCode"]

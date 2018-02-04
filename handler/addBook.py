@@ -54,6 +54,7 @@ class AddBook():
             bot.send_message(chat_id=message.chat_id, text="خلاصه کتاب را وارد کن")
             return self.states[current_state]["nextState"]["addSummery"]
         elif message.text=="بازگشت":
+            bot.send_message(chat_id=message.chat_id, text="به صفحه اصلی بازگشتید", reply_markup=keyboards["loggedIn"])
             return self.states[current_state]["nextState"]["loggedIn"]
         elif message.text=="اضافه کن":
             # اضافه کردن کتاب
@@ -61,13 +62,13 @@ class AddBook():
                 bot.send_message(chat_id=message.chat_id, text="لطفا فیلد های ستاره دار را وارد کنید")
                 return self.states[current_state]["nextState"]["addBook"]
             else:
-                r = requests.post(url.base_url + '/api/phone-validator/', data={'token':tokens.tokens[message.chat_id],'title':book.name,'author':book.author
+                r = requests.post(url.base_url + '/books/api/create/', data={'token':tokens.tokens[message.chat_id],'title':book.name,'author':book.author
                                                                                 ,'period':book.period,"price":book.price
                                                                                 ,"genre":book.genre,'reader_age':book.reader_age,
                                                                                 'summary':book.summery,'description':book.description,
-                                                                                'jeld_num':book.jeld_num,'page_num':book.page_num})
+                                                                                'jeld_num':book.jeld_num,'page_num':book.page_num,'length':20,'width':10,'pub_date':"1999-12-12"})
                 print(r.text)
-                bot.send_message(chat_id=message.chat_id, text="کتاب شما با موفقیت اضافه شد")
+                bot.send_message(chat_id=message.chat_id, text="کتاب شما با موفقیت اضافه شد",reply_markup=keyboards["loggedIn"])
                 book.printBook()
                 book.eraseBook()
                 return self.states[current_state]["nextState"]["loggedIn"]
