@@ -31,11 +31,11 @@ keyboards = {
         [
             telegram.KeyboardButton("اضافه کن"),
             telegram.KeyboardButton("بازگشت"),
-            telegram.KeyboardButton("عنوان")
+            telegram.KeyboardButton("عنوان*")
         ],
-        [telegram.KeyboardButton("نویسنده"),
-         telegram.KeyboardButton("قیمت"),
-         telegram.KeyboardButton("مدت زمان")],
+        [telegram.KeyboardButton("نویسنده*"),
+         telegram.KeyboardButton("قیمت*"),
+         telegram.KeyboardButton("مدت زمان*")],
         [telegram.KeyboardButton("ژانر"),
          telegram.KeyboardButton("رده سنی"),
          telegram.KeyboardButton("تعداد صفحات")],
@@ -43,5 +43,36 @@ keyboards = {
          telegram.KeyboardButton("خلاصه کتاب"),
          telegram.KeyboardButton("توضیحات"), ]
     ], resize_keyboard=True)
-
+    ,
+    "addGenre": telegram.ReplyKeyboardMarkup([
+        [
+            telegram.KeyboardButton("وحشت"),
+            telegram.KeyboardButton("ماجراجویی"),
+            telegram.KeyboardButton("کمدی"), ], [
+            telegram.KeyboardButton("تاریخی"),
+            telegram.KeyboardButton("افسانه"),
+            telegram.KeyboardButton("هنری"), ], [
+            telegram.KeyboardButton("روانشناسی"),
+            telegram.KeyboardButton("عاشقانه"),
+            telegram.KeyboardButton("ورزشی"),
+            telegram.KeyboardButton("تراژدی"),
+        ]
+    ], resize_keyboard=True)
+    ,
+    "addReadeAge": telegram.ReplyKeyboardMarkup([
+        [
+            telegram.KeyboardButton("گروه سنی الف"),
+            telegram.KeyboardButton("گروه سنی ب"),
+            telegram.KeyboardButton("گروه سنی ج"), ], [
+            telegram.KeyboardButton("گروه سنی د"),
+            telegram.KeyboardButton("گروه سنی ه")
+        ]
+    ], resize_keyboard=True)
+    ,
+    "addPeriod": telegram.ReplyKeyboardMarkup([
+        [
+            telegram.KeyboardButton("روزانه"),
+            telegram.KeyboardButton("هفتگی"),
+            telegram.KeyboardButton("ماهانه"), ]
+    ], resize_keyboard=True)
 }

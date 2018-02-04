@@ -20,26 +20,26 @@ class AddBook():
         print(book.summery)
         print(book.reader_age)
     def addBook(self, bot, message, current_state):
-        if message.text=="عنوان":
+        if message.text=="عنوان*":
             bot.send_message(chat_id=message.chat_id, text="نام کتاب را وارد کنید")
             return self.states[current_state]["nextState"]["addName"]
-        elif message.text=="نویسنده":
+        elif message.text=="نویسنده*":
             bot.send_message(chat_id=message.chat_id, text="نام نویسنده را وارد کنید")
             return self.states[current_state]["nextState"]["addAuthor"]
-        elif message.text=="قیمت":
+        elif message.text=="قیمت*":
             bot.send_message(chat_id=message.chat_id, text="قیمت را به تومان وارد کنید")
             return self.states[current_state]["nextState"]["addPrice"]
-        elif message.text=="مدت زمان":
-            bot.send_message(chat_id=message.chat_id, text="زمان وارد کن")
+        elif message.text=="مدت زمان*":
+            bot.send_message(chat_id=message.chat_id, text="زمان وارد کن",reply_markup=keyboards["addPeriod"])
             return self.states[current_state]["nextState"]["addPeriod"]
         elif message.text=="تعداد صفحات":
             bot.send_message(chat_id=message.chat_id, text="تعداد صفحات را وارد کن")
             return self.states[current_state]["nextState"]["addPageNumber"]
         elif message.text=="رده سنی":
-            bot.send_message(chat_id=message.chat_id, text="رده سنی را وارد کن")
+            bot.send_message(chat_id=message.chat_id, text="رده سنی را وارد کن",reply_markup=keyboards["addReadeAge"])
             return self.states[current_state]["nextState"]["addReadAge"]
         elif message.text=="ژانر":
-            bot.send_message(chat_id=message.chat_id, text="ژانر را انتخاب کن")
+            bot.send_message(chat_id=message.chat_id, text="ژانر را انتخاب کن",reply_markup=keyboards["addGenre"])
             return self.states[current_state]["nextState"]["addGenre"]
         elif message.text=="تعداد جلد":
             bot.send_message(chat_id=message.chat_id, text="تعداد جلد راوارد کن")
@@ -54,8 +54,14 @@ class AddBook():
             return self.states[current_state]["nextState"]["loggedIn"]
         elif message.text=="اضافه کن":
             # اضافه کردن کتاب
-            print("اضافه کردن کتاب")
-            self.printBook()
-            return self.states[current_state]["nextState"]["addPeriod"]
+            if book.name=="" or book.author=="" or book.price==0 or book.period=="":
+                bot.send_message(chat_id=message.chat_id, text="لطفا فیلد های ستاره دار را وارد کنید")
+                return self.states[current_state]["nextState"]["addBook"]
+            else:
+
+                bot.send_message(chat_id=message.chat_id, text="کتاب شما با موفقیت اضافه شد")
+                book.printBook()
+                book.eraseBook()
+                return self.states[current_state]["nextState"]["loggedIn"]
 
 

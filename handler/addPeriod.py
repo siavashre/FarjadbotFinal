@@ -7,6 +7,8 @@ class AddPeriod():
             self.states = json.load(f)
 
     def addPeriod(self, bot, message, current_state):
-        book.period=message.text
+        period={"روزانه":"daily","هفتگی":"weekly","ماهانه":"monthly"}
+        book.period = period[message.text]
+        bot.send_message(chat_id=message.chat_id, text="مدت زمان انتخاب شد", reply_markup=keyboards["addBook"])
         return self.states[current_state]["nextState"]["addBook"]
 

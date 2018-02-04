@@ -20,16 +20,16 @@ class EnterPhoneNumber():
             # bot.send_message(chat_id=message.chat_id, text=message['contact']['phone_number'])
             phoneNumber = message.text
         print(phoneNumber)
-        # r=requests.post(url.base_url+'/api/phone-validator/',data={'phone_number':phoneNumber})
-        # print(r.text)
-        # print(r.content)
-        # print(json.loads(r.text)['existence'])
+        r=requests.post(url.base_url+'/api/phone-validator/',data={'phone_number':phoneNumber})
+        print(r.text)
+        print(r.content)
+        print(json.loads(r.text)['existence'])
         # --------------------
-        # if json.loads(r.text)['existence'] :
-        #     bot.send_message(chat_id=message.chat_id, text="Dear" +json.loads(r.text)['name']+ "Please Enter Your Code")
-        return self.states[current_state]["nextState"]["enterCode"]
-        # else:
-        #     bot.send_message(chat_id=message.chat_id, text="Please Register On site")
-        #     return self.states[current_state]["nextState"]["firstTime"]
+        if json.loads(r.text)['existence'] :
+            bot.send_message(chat_id=message.chat_id, text="Dear" +json.loads(r.text)['name']+ "Please Enter Your Code")
+            return self.states[current_state]["nextState"]["enterCode"]
+        else:
+            bot.send_message(chat_id=message.chat_id, text="Please Register On site")
+            return self.states[current_state]["nextState"]["firstTime"]
 
 
