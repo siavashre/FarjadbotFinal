@@ -1,6 +1,7 @@
 import json
 from util.keyboards import keyboards
 import requests
+import ast
 from model import url
 class LoggedIn():
 
@@ -9,17 +10,41 @@ class LoggedIn():
             self.states = json.load(f)
 
     def loggedIn(self, bot, message, current_state):
+        genre = {'Horror': 'وحشت', 'Adventure': "ماجراجویی", 'Comedy': 'کمدی', "Historical"
+        : "تاریخی", "Fantasy": "فانتزی", "Art": "هنری", "Psychology": "روانشناسی", "Romance": "عاشقانه",
+                 "Sports": "ورزشی"
+            , "Trajedy": "تراژدی"}
+        readerAge = { "A":"گروه سنی الف",  "B":"گروه سنی ب",  "C":"گروه سنی ج",  "D":"گروه سنی د",  "E":"گروه سنی ه"}
+        period = { "daily":"روزانه",  "weekly":"هفتگی",  "monthly":"ماهانه"}
         if message.text=="Add Book to your account":
             print("aaa")
             bot.send_message(chat_id=message.chat_id, text="لطفا هر فیلد را انتخاب و وارد کنید",reply_markup=keyboards["addBook"])
             return self.states[current_state]["nextState"]["addBook"]
         elif message.text=="Whatch Books":
             r = requests.get(url.base_url + '/books/api/')
-            print(r.content)
-            bot.send_message(chat_id=message.chat_id,text=str(r))
+            print(r.text)
+            books=ast.literal_eval(r.text)
+            for book in books:
+                bot.send_message(chat_id=message.chat_id, text=
+                                 "عنوان:"+book['title']+"\n"
+                                 +"نویسنده:"+book['author']+"\n"
+                                 +"سال انتشار:"+str(book['pub_date'])+"\n"
+                                 +"مدت زمان:"+period[book['period']]+"\n"
+                                 +"قیمت:"+str(book['price'])+"\n"
+                                 +"ژانر:"+genre[book['genre']]+"\n"
+                                 +"رده سنی:"+readerAge[book['reader_age']]+"\n"
+                                 +"خلاصه:"+book['summary']+"\n"
+                                 +"توضیحات:"+book['description']+"\n"
+                                 +"تعداد جلد:"+str(book['jeld_num'])+"\n"
+                                 +"تعداد صفحه:"+str(book['page_num'])
+                                 ,reply_markup=keyboards["watchMore"])
+            # for book in r.text:
+
             # ketab behesh bedim
-            print("bbbb")
             # bot.send_message(chat_id=message.chat_id, text="Hold button for watch books",reply_markup=keyboards["watchBook"])
-            bot.send_message(chat_id=message.chat_id,text="moad",
-                             reply_markup=keyboards["watchMore"])
+            # bot.send_message(chat_id=message.chat_id,text="moad",
+            #                  reply_markup=keyboards["watchMore"])
             return self.states[current_state]["nextState"]["watchMore"]
+
+
+

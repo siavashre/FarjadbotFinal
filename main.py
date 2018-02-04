@@ -9,7 +9,6 @@ from util.stateMachineRunner import StateMachineRunner
 firstTime=FirstTimeHandler()
 stateMachineRunner = StateMachineRunner()
 botConfigs = ""
-base_url="192.168.1.103"
 with open("configs/bot.json","r") as f:
     botConfigs = json.load(f)
 
