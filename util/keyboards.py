@@ -7,9 +7,10 @@ keyboards = {
         ]
     ], resize_keyboard=True),
     "loggedIn": telegram.ReplyKeyboardMarkup([
-        [
-            telegram.KeyboardButton("اضافه کردن کتاب"), telegram.KeyboardButton("مشاهده کتب")
-        ]
+
+        [telegram.KeyboardButton("اضافه کردن کتاب"), telegram.KeyboardButton("مشاهده کتب")],
+        [telegram.KeyboardButton("دعوت از دوستان")]
+
     ], resize_keyboard=True),
     "resendCode": telegram.ReplyKeyboardMarkup([
         [
@@ -74,5 +75,34 @@ keyboards = {
             telegram.KeyboardButton("روزانه"),
             telegram.KeyboardButton("هفتگی"),
             telegram.KeyboardButton("ماهانه"), ]
+    ], resize_keyboard=True),
+    "graduation": telegram.ReplyKeyboardMarkup([
+        [
+            telegram.KeyboardButton("زیر دیپلم"),
+            telegram.KeyboardButton("ٔدیپلم"),
+            telegram.KeyboardButton("کارشناسی"), ], [
+            telegram.KeyboardButton("کارشناسی ارشد"),
+            telegram.KeyboardButton("دکتری")
+        ]
     ], resize_keyboard=True)
+    ,
+    "register": telegram.ReplyKeyboardMarkup([
+        [
+            telegram.KeyboardButton("نام"),
+            telegram.KeyboardButton("نام خانوادگی"),
+            telegram.KeyboardButton("نام کاربری")
+        ],
+        [telegram.KeyboardButton("گذرواژه"),
+         telegram.KeyboardButton("ایمیل"),
+         telegram.KeyboardButton("شهر")],
+        [telegram.KeyboardButton("استان"),
+         telegram.KeyboardButton("آدرس"),
+         telegram.KeyboardButton("شغل")],
+        [telegram.KeyboardButton("تحصیلات"),
+         telegram.KeyboardButton("کد دعوت"),
+         telegram.KeyboardButton("ثبت نام"),
+         telegram.KeyboardButton("بازگشت"),
+         ]
+    ], resize_keyboard=True)
+
 }

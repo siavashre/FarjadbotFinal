@@ -23,7 +23,7 @@ class EnterPhoneNumber():
             print(tokens.tokens)
             return self.states[current_state]["nextState"]["enterCode"]
         else:
-            bot.send_message(chat_id=message.chat_id, text="برای استفاده از بات ابتدا در سایت ما ثبت نام کنید")
-            return self.states[current_state]["nextState"]["firstTime"]
+            bot.send_message(chat_id=message.chat_id, text="شما در سایت ما ثبت نام نکرده اید.\n برای ثبت نام کد ارسال شده به تلفن همراه خود را وارد کنید")
+            return self.states[current_state]["nextState"]["checkRegisterCode"]
 
 

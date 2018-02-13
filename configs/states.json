@@ -11,16 +11,132 @@
     "function" :"checkPhoneNumber",
     "nextState":{
       "firstTime":"firstTime",
-      "enterCode":"enterCode"
+      "enterCode":"enterCode",
+      "checkRegisterCode":"checkRegisterCode"
     }
   },
-  "notRegister":{
-    "updater":"notRegister",
-    "function":"registerOnSite",
+  "checkRegisterCode":{
+    "updater":"checkRegisterCode",
+    "function":"checkRegisterCode",
     "nextState":{
-      "firstTime":"firstTime"
+      "register":"register",
+      "resnedRegisterCode":"resnedRegisterCode"
     }
   },
+  "register":{
+    "updater":"register",
+    "function":"register",
+    "nextState":{
+      "addUserName":"addUserName",
+      "addFamill":"addFamill",
+      "addUser":"addUser",
+      "addCity":"addCity",
+      "addProvience":"addProvience",
+      "addAdress":"addAdress",
+      "addJob":"addJob",
+      "addGraduate":"addGraduate",
+      "addInviteCode":"addInviteCode",
+      "addPN":"addPN",
+      "firstTime":"firstTime",
+      "addEmail":"addEmail",
+      "addPassword":"addPassword",
+      "loggedIn":"loggedIn"
+
+    }
+  },
+  "addPassword":{
+    "updater":"addPassword",
+    "function":"addPassword",
+    "nextState":{
+      "register":"register"
+    }
+  },
+  "addUserName":{
+    "updater":"addUserName",
+    "function":"addUserName",
+    "nextState":{
+      "register":"register"
+    }
+  },
+  "addFamill":{
+    "updater":"addFamill",
+    "function":"addFamill",
+    "nextState":{
+      "register":"register"
+    }
+  },
+  "addUser":{
+    "updater":"addUser",
+    "function":"addUser",
+    "nextState":{
+      "register":"register"
+    }
+  },
+  "addCity":{
+    "updater":"addCity",
+    "function":"addCity",
+    "nextState":{
+      "register":"register"
+    }
+  },
+  "addProvience":{
+    "updater":"addProvience",
+    "function":"addProvience",
+    "nextState":{
+      "register":"register"
+    }
+  },
+  "addAdress":{
+    "updater":"addAdress",
+    "function":"addAdress",
+    "nextState":{
+      "register":"register"
+    }
+  },
+  "addJob":{
+    "updater":"addJob",
+    "function":"addJob",
+    "nextState":{
+      "register":"register"
+    }
+  },
+  "addGraduate":{
+    "updater":"addGraduate",
+    "function":"addGraduate",
+    "nextState":{
+      "register":"register"
+    }
+  },
+  "addInviteCode":{
+    "updater":"addInviteCode",
+    "function":"addInviteCode",
+    "nextState":{
+      "register":"register"
+    }
+  },
+  "addEmail":{
+    "updater":"addEmail",
+    "function":"addEmail",
+    "nextState":{
+      "register":"register"
+    }
+  },
+  "addPN":{
+    "updater":"addPN",
+    "function":"addPN",
+    "nextState":{
+      "register":"register"
+    }
+  },
+
+  "resnedRegisterCode":{
+    "updater":"resnedRegisterCode",
+    "function":"resnedRegisterCode",
+    "nextState":{
+      "checkRegisterCode":"checkRegisterCode"
+    }
+  },
+
   "enterCode":{
     "updater":"enterCode",
     "function":"checkCode",
@@ -34,6 +150,7 @@
     "function":"resendCode",
     "nextState":{
       "enterCode":"enterCode"
+
     }
   },
   "loggedIn":{
@@ -41,7 +158,8 @@
     "function":"loggedIn",
     "nextState":{
       "watchMore":"watchMore",
-      "addBook":"addBook"
+      "addBook":"addBook",
+      "loggedIn":"loggedIn"
     }
   },
   "watchMore":{
