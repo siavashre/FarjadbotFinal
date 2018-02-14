@@ -50,6 +50,7 @@ class Register():
             return self.states[current_state]["nextState"]["addEmail"]
         elif message.text == "بازگشت":
             bot.send_message(chat_id=message.chat_id, text="به صفحه اصلی بازگشتید",reply_markup=keyboards['enterPhoneNumber'])
+            user.eraseUser()
             return self.states[current_state]["nextState"]["firstTime"]
         elif message.text == "ثبت نام":
             print(user.name)
@@ -64,6 +65,7 @@ class Register():
             print(user.username)
             print(user.job)
             bot.send_message(chat_id=message.chat_id, text="به صفحه اصلی بازگشتید",reply_markup=keyboards['loggedIn'])
+            user.eraseUser()
 
             return self.states[current_state]["nextState"]["loggedIn"]
             # اضافه کردن کتاب

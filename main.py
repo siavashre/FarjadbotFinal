@@ -21,4 +21,8 @@ process_handler=MessageHandler(Filters.text | Filters.contact ,stateMachineRunne
 dispatcher.add_handler(start_handler)
 dispatcher.add_handler(process_handler)
 
-updater.start_polling()
+while True:
+    try:
+        updater.start_polling()
+    except Exception as e:
+        print(e)
