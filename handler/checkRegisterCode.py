@@ -1,5 +1,8 @@
 import json
 from util.keyboards import keyboards
+import requests
+from model import setting
+from model import url
 class CheckRegisterCode():
 
     def __init__(self):
@@ -8,7 +11,10 @@ class CheckRegisterCode():
 
     def checkRegisterCode(self, bot, message, current_state):
         # print(1)
-        if message.text=='12345':
+        r = requests.post(url.base_url + '/authentication/authentication-code-validator', data={'authentication_code': message.text,'phone_number': setting.phoneNumber[message.chat_id]})
+
+        print(r.content)
+        if json.loads(r.text)["is_valid"]:
             print("here")
             bot.send_message(chat_id=message.chat_id, text="برای ثبت نام مشخصات خود را وارد کنید",reply_markup=keyboards["register"])
             return self.states[current_state]["nextState"]["register"]

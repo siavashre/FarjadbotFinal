@@ -92,13 +92,13 @@ keyboards = {
             telegram.KeyboardButton("نام خانوادگی"),
             telegram.KeyboardButton("نام کاربری")
         ],
-        [telegram.KeyboardButton("گذرواژه"),
+        [telegram.KeyboardButton("تحصیلات"),
          telegram.KeyboardButton("ایمیل"),
          telegram.KeyboardButton("شهر")],
         [telegram.KeyboardButton("استان"),
          telegram.KeyboardButton("آدرس"),
          telegram.KeyboardButton("شغل")],
-        [telegram.KeyboardButton("تحصیلات"),
+        [
          telegram.KeyboardButton("کد دعوت"),
          telegram.KeyboardButton("ثبت نام"),
          telegram.KeyboardButton("بازگشت"),

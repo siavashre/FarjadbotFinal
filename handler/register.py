@@ -4,7 +4,7 @@ from model import url
 from model import tokens
 from util.keyboards import keyboards
 from handler import user
-
+from model import setting
 
 class Register():
     def __init__(self):
@@ -59,15 +59,27 @@ class Register():
             print(user.email)
             print(user.city)
             print(user.provience)
-            print(user.phoneNumber)
+            print(setting.phoneNumber[message.chat_id])
             print(user.graduation)
             print(user.inviteCode)
             print(user.username)
             print(user.job)
             bot.send_message(chat_id=message.chat_id, text="به صفحه اصلی بازگشتید",reply_markup=keyboards['loggedIn'])
-            user.eraseUser()
 
-            return self.states[current_state]["nextState"]["loggedIn"]
+            r = requests.post(url.base_url + '/api/create/',
+                              data={'first_name':user.name,"last_name":user.famil,"phone":setting.phoneNumber[message.chat_id],"profession":user.job
+                                    ,"education":user.graduation,"city":user.city,"province":user.provience,"address":user.address
+                                    ,"email":user.email,"invited_with":user.inviteCode})
+            print(r.content)
+            if json.loads(r.text)['is_create']:
+                user.eraseUser()
+                # print('a')
+                # tokens.tokens.update({message.chat_id: json.loads(r.text)['token']})
+                return self.states[current_state]["nextState"]["loggedIn"]
+            else:
+                bot.send_message(chat_id=message.chat_id, text="ثبت نام شما موفق نبود. لطفا دوباره تلاش کنید",
+                                 reply_markup=keyboards["register"])
+                return self.states[current_state]["nextState"]["register"]
             # اضافه کردن کتاب
             # if book.name == "" or book.author == "" or book.price == 0 or book.period == "":
             #     bot.send_message(chat_id=message.chat_id, text="لطفا فیلد های ستاره دار را وارد کنید")

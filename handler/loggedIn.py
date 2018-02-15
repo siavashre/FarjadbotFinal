@@ -4,6 +4,8 @@ import requests
 import ast
 from model import url
 from model import setting
+from model import tokens
+
 class LoggedIn():
 
     def __init__(self):
@@ -45,15 +47,10 @@ class LoggedIn():
                                  ,reply_markup=keyboards["watchMore"])
             return self.states[current_state]["nextState"]["watchMore"]
         elif message.text == "دعوت از دوستان":
-            bot.send_message(chat_id=message.chat_id, text="کد دعوت شما به صورت زیر است")
+            r = requests.post(url.base_url + '/api/invitation-code-generate/',data={'phone_number':setting.phoneNumber[message.chat_id]})
+            print(r.content)
+            bot.send_message(chat_id=message.chat_id, text="کد دعوت شما به صورت زیر است"+"\n"+json.loads(r.text)['invitation_code']+"\n"+json.loads(r.text)['error'])
             return self.states[current_state]["nextState"]["loggedIn"]
-            # for book in r.text:
-
-            # ketab behesh bedim
-            # bot.send_message(chat_id=message.chat_id, text="Hold button for watch books",reply_markup=keyboards["watchBook"])
-            # bot.send_message(chat_id=message.chat_id,text="moad",
-            #                  reply_markup=keyboards["watchMore"])
-            return self.states[current_state]["nextState"]["watchMore"]
 
 
 

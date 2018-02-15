@@ -40,7 +40,8 @@
       "firstTime":"firstTime",
       "addEmail":"addEmail",
       "addPassword":"addPassword",
-      "loggedIn":"loggedIn"
+      "loggedIn":"loggedIn",
+      "register":"register"
 
     }
   },

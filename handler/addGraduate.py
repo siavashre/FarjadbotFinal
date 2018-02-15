@@ -8,7 +8,6 @@ class AddGraduate():
 
     def addGraduate(self, bot, message, current_state):
         user.graduation=message.text
-        print("kri")
         bot.send_message(chat_id=message.chat_id, text="تحصیلات انتخاب شد", reply_markup=keyboards['register'])
         return self.states[current_state]["nextState"]["register"]
 

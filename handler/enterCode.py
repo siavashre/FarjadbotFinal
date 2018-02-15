@@ -1,5 +1,8 @@
 import json
+from model import url
+from model import setting
 from util.keyboards import keyboards
+import requests
 class EnterCode():
 
     def __init__(self):
@@ -7,8 +10,11 @@ class EnterCode():
             self.states = json.load(f)
 
     def checkCode(self, bot, message, current_state):
-        # print(1)
-        if message.text=='12345':
+
+        r = requests.post(url.base_url + '/authentication/authentication-code-validator', data={'authentication_code': message.text,'phone_number': setting.phoneNumber[message.chat_id]})
+
+        print(r.content)
+        if json.loads(r.text)["is_valid"]:
             bot.send_message(chat_id=message.chat_id, text="شما وارد حساب کاربری خورد شدید",reply_markup=keyboards["loggedIn"])
             return self.states[current_state]["nextState"]["loggedIn"]
         else:

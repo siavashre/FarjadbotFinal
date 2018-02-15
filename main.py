@@ -2,6 +2,7 @@ from telegram.ext import Updater,CommandHandler
 import json
 from telegram.ext.filters import Filters
 from telegram.ext.messagehandler import MessageHandler
+import time
 
 from handler.firstTime import FirstTimeHandler
 from util.stateMachineRunner import StateMachineRunner
@@ -25,4 +26,5 @@ while True:
     try:
         updater.start_polling()
     except Exception as e:
-        print(e)
+        time.sleep(15)
+
