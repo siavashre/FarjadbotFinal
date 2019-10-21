@@ -6,7 +6,7 @@ future==0.16.0
 hazm==0.5.2
 idna==2.6
 libwapiti==0.2.1
-nltk==3.0.5
+nltk==3.4.5
 psycopg2==2.7.4
 python-telegram-bot==9.0.0
 requests==2.18.4
